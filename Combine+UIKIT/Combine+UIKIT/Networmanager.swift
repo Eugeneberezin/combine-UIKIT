@@ -12,7 +12,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     var anyCancelable = Set<AnyCancellable>()
     
-    func getResults(description: String, location: String) -> Future<[Job], Error> {
+    func getResults(description: String, location: String) -> AnyPublisher<[Job], Error> {
         
         let urlString = "https://jobs.github.com/positions.json?description=\(description.replacingOccurrences(of: " ", with: "+"))&location=\(location.replacingOccurrences(of: " ", with: "+"))"
          let url = URL(string: urlString)!
@@ -39,6 +39,7 @@ class NetworkManager {
                 }
                 .store(in: &self.anyCancelable)
         }
+        .eraseToAnyPublisher()
         
         
     }

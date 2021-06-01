@@ -9,11 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     var anyCancelable = Set<AnyCancellable>()
-    var job = [Job]()
+    let viewModel = JobsViewModel()
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(JobCell.self, forCellReuseIdentifier: JobCell.reuseIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -28,26 +28,13 @@ class ViewController: UIViewController {
     }
     
     private func fetchJobs() {
-        NetworkManager.shared.getResults(description: "", location: "")
+        viewModel.fetchJobs()
+        viewModel.$jobs
             .receive(on: DispatchQueue.main)
-            .map{$0}
-            .sink { completion in
-    
-                switch completion {
-                
-                case .finished:
-                    print("Done")
-                case .failure(let error):
-                    print(error)
-                }
-            } receiveValue: {[weak self] jobs in
-                guard let self = self else {return}
-                self.job = jobs
-                self.tableView.reloadData()
-                
+            .sink {[weak self] _ in
+                self?.tableView.reloadData()
             }
             .store(in: &anyCancelable)
-
     }
 
 
@@ -55,13 +42,23 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return job.count
+        return viewModel.jobs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = job[indexPath.row].company
+        let cell = tableView.dequeueReusableCell(withIdentifier: JobCell.reuseIdentifier, for: indexPath) as! JobCell
+        viewModel.$jobs
+            .receive(on: DispatchQueue.main)
+            .sink { jobs in
+                cell.configureCell(with: jobs[indexPath.row])
+            }
+            .store(in: &anyCancelable)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
     
     

@@ -15,6 +15,9 @@
 		0554AA25265F27A10087E5ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0554AA23265F27A10087E5ED /* LaunchScreen.storyboard */; };
 		0554AA2E265F27BC0087E5ED /* Networmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0554AA2D265F27BC0087E5ED /* Networmanager.swift */; };
 		0554AA31265F28220087E5ED /* JobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0554AA30265F28220087E5ED /* JobModel.swift */; };
+		05DF19A12665B141005F9838 /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF19A02665B141005F9838 /* JobCell.swift */; };
+		05DF19A42665B1E5005F9838 /* JobsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF19A32665B1E5005F9838 /* JobsViewModel.swift */; };
+		05DF19A72665B584005F9838 /* JobDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DF19A62665B583005F9838 /* JobDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		0554AA26265F27A10087E5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0554AA2D265F27BC0087E5ED /* Networmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networmanager.swift; sourceTree = "<group>"; };
 		0554AA30265F28220087E5ED /* JobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
+		05DF19A02665B141005F9838 /* JobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
+		05DF19A32665B1E5005F9838 /* JobsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsViewModel.swift; sourceTree = "<group>"; };
+		05DF19A62665B583005F9838 /* JobDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 				0554AA26265F27A10087E5ED /* Info.plist */,
 				0554AA2D265F27BC0087E5ED /* Networmanager.swift */,
 				0554AA30265F28220087E5ED /* JobModel.swift */,
+				05DF19A02665B141005F9838 /* JobCell.swift */,
+				05DF19A32665B1E5005F9838 /* JobsViewModel.swift */,
+				05DF19A62665B583005F9838 /* JobDetailsController.swift */,
 			);
 			path = "Combine+UIKIT";
 			sourceTree = "<group>";
@@ -144,10 +153,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0554AA2E265F27BC0087E5ED /* Networmanager.swift in Sources */,
+				05DF19A12665B141005F9838 /* JobCell.swift in Sources */,
+				05DF19A72665B584005F9838 /* JobDetailsController.swift in Sources */,
 				0554AA31265F28220087E5ED /* JobModel.swift in Sources */,
 				0554AA1D265F27A10087E5ED /* ViewController.swift in Sources */,
 				0554AA19265F27A10087E5ED /* AppDelegate.swift in Sources */,
 				0554AA1B265F27A10087E5ED /* SceneDelegate.swift in Sources */,
+				05DF19A42665B1E5005F9838 /* JobsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

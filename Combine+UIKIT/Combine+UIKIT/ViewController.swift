@@ -57,6 +57,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let jobDetailsVC = JobDetailsController()
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.$jobs
+            .receive(on: DispatchQueue.main)
+            .sink { jobs in
+                jobDetailsVC.job.send(jobs[indexPath.row])
+            }
+            .store(in: &anyCancelable)
+        navigationController?.pushViewController(jobDetailsVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100
     }

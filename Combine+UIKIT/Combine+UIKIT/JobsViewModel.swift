@@ -10,6 +10,7 @@ import Combine
 
 class JobsViewModel {
     @Published var jobs = [Job]()
+    
     private var anyCancelable = Set<AnyCancellable>()
     
     init() {}
